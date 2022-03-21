@@ -1,7 +1,7 @@
 # Wordle DE
 This program uses genetic algrorithms to find the optimal 4 opening words for the German Wordle (https://wordle.at/).
 
-You get an output like this:
+You'll get an output like this:
 | Index | Fitness | Words | Letters |
 | ----------- | ----------- | ----------- | ----------- |
 | [4853, 3764, 1898, 2068] | 3.0959164292497627 | ['MODUL', 'ZWACK', 'THING', 'VERBS'] | 20 |
