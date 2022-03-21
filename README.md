@@ -25,6 +25,7 @@ You'll get an output like this:
 | [1898, 4607, 4853, 2068] | 2.35707502374169 | ['THING', 'PALME', 'MODUL', 'VERBS'] | 17 |
 | [1144, 4853, 3764, 2068] | 2.324786324786325 | ['JOHNS', 'MODUL', 'ZWACK', 'VERBS'] | 18 |
 | [4853, 423, 1898, 2068] | 2.308641975308642 | ['MODUL', 'CHIPS', 'THING', 'VERBS'] | 17 |
+
 The columns correspond to
 1. The indexes in the list of words.
 2. The assigned fitness for the solution.
