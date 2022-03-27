@@ -1,6 +1,8 @@
 import random
 import math
 import timeit
+from wsgiref import headers
+from tabulate import tabulate
 
 start = timeit.default_timer()
 
@@ -144,12 +146,16 @@ for g in range(1000): # no. of generations
 
 
 result = selection(nextGeneration)
+output = []
 for i in result:
     resultWords = []
     for w in i:
         resultWords.append(wordlist[w])
-    print(i, "     ", fitness(i), "     ", resultWords, "     ", letterNo(i))
+    # print(i, "     ", fitness(i), "     ", resultWords, "     ", letterNo(i))
+    output.append([i, fitness(i), resultWords, letterNo(i)])
+
+print(tabulate(output, headers=["Index", "Fitness", "Words", "Letters"]))
 
 stop = timeit.default_timer()
 
-print('Time: ', stop - start)  
+print('------------------------\nExecution Time: ', stop - start)
