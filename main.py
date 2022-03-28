@@ -1,14 +1,12 @@
 import random
 import math
 import timeit
-from wsgiref import headers
 from tabulate import tabulate
 
 start = timeit.default_timer()
 
 with open('wordlist.txt', 'r') as f:
     allwords = [line.strip() for line in f]
-		# filter out words with letter multiples
 
 def filterList(list):
     result = []
@@ -109,9 +107,8 @@ def letterNo(solution):
 
 currentGeneration = []
 nextGeneration = []
-# first generation
 for i in range(100):
-    nextGeneration.append(randomSolution())
+    nextGeneration.append(randomSolution()) # first generation
 
 parents = []
 
@@ -124,9 +121,6 @@ for g in range(1000): # no. of generations
     generationRoot = []
     generationRoot.extend(parents)
     del generationRoot[-math.floor(len(parents)/2):]
-    
-    # for i in range(math.floor(len(parents)/2)):
-    #     generationRoot.append(crossover(parents[i*2-1], parents[i*2]))
 
     for i in range(2):
         for p1 in parents:
@@ -134,16 +128,13 @@ for g in range(1000): # no. of generations
 
     nextGeneration.extend(generationRoot)
 
-    # for n in range(4):
-    #     for i in generationRoot:
-    #         nextGeneration.append(mutation(i))
-
     while len(nextGeneration) < 101 - 15:
         nextGeneration.append(mutation(generationRoot[random.randint(0, len(generationRoot)-1)]))
     
     for i in range(15):
         nextGeneration.append(randomSolution())
 
+# print solutions
 
 result = selection(nextGeneration)
 output = []
@@ -151,7 +142,6 @@ for i in result:
     resultWords = []
     for w in i:
         resultWords.append(wordlist[w])
-    # print(i, "     ", fitness(i), "     ", resultWords, "     ", letterNo(i))
     output.append([i, fitness(i), resultWords, letterNo(i)])
 
 print(tabulate(output, headers=["Index", "Fitness", "Words", "Letters"]))
